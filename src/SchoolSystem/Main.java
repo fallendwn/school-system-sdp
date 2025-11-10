@@ -1,4 +1,4 @@
-package src.School System;
+package src.SchoolSystem;
 
 public class Main {
     
