@@ -56,7 +56,7 @@ public class Student implements IUser,IObserver {
     public void returnGrade(Student student){strategy.execute(student);}
 
     private final List<String> notifications = new ArrayList<>();
-    
+
     @Override
      public void update(Grade grade) {
         String message = String.format(
@@ -65,7 +65,6 @@ public class Student implements IUser,IObserver {
         );
 
         notifications.add(message);
-        // System.out.println(name + ", " + message);
     }
 
     public void showNotifications() {

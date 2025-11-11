@@ -56,11 +56,11 @@ public class Teacher implements IUser, IPublisher{
 
     public ArrayList<Student> getStudents(){return students;}
 
-    public void giveGrade(Student student, float value, int weight, String type) {
+    public void giveGrade(Student student, int id,float value, int weight, String type) {
         Grade grade = new GradeBuilder()
-                .setId() // надо как то айдишку добавлять
+                .setId(id)
                 .setValue(value)
-                .setDate()
+                .setDate(LocalDate.now()) // надо чекнуть
                 .setSubject(this.subject)
                 .setTeacher(this)
                 .setStudent(student)
@@ -73,19 +73,6 @@ public class Teacher implements IUser, IPublisher{
                 name, value, type, student.getName(), subject);
 
         notify(grade); 
-    }
-
-
-    @Override
-    public void attach(Student student) { // делает то же самое что и addStudent надо что то придумать
-        if(!students.contains(student)){
-        students.add(student);
-       }
-    }
-
-    @Override
-    public void detach(Student student) {
-        students.remove(student);
     }
     
     @Override
