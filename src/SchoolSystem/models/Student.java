@@ -6,20 +6,26 @@ import src.SchoolSystem.factory.IUser;
 public class Student implements IUser {
 
 
-    private final int id;
-    private final String name;
+    private int id;
+    private String name;
     private final ArrayList<Grade> grades = new ArrayList<>();
     private int gradeLevel;
     private int age;
 
-    public Student(int gradeLevel, String name, int id, int age){
 
-        this.id = id;
+
+    public void setName(String name){
+
         this.name = name;
-        this.gradeLevel = gradeLevel;
-        this.age = age;
 
     }
+
+    public void setId(int id){
+
+        this.id = id;
+
+    }
+
     @Override
     public int getId() { return id; }
 
