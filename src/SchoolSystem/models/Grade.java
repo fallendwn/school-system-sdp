@@ -2,9 +2,9 @@ package src.SchoolSystem.models;
 
 import java.time.LocalDate;
 import src.SchoolSystem.builder.GradeBuilder;
+import src.SchoolSystem.decorator.interfaces.IGrade;
 
-
-public class Grade {
+public class Grade implements IGrade {
     private final int id;
     private final float value;
     private final LocalDate date;
@@ -13,7 +13,7 @@ public class Grade {
     private final Student student;
     private final String type; // exam homework ? 
     private final double weight; // for weight strategy;
-    private String comment; // for decorator initially it's empty
+    // private String comment; // for decorator initially it's empty
 
     public Grade(GradeBuilder builder){
 
@@ -28,23 +28,40 @@ public class Grade {
 
     }
     
-    public int getId(){return this.id;}
-    public double getValue(){return this.value;}
-    public LocalDate getDate(){return this.date;}
-    public String getSubject(){return this.subject;}
-    public Teacher getTeacher(){return this.teacher;}
-    public Student getStudent(){return this.student;}
-    public double getWeight(){return weight;}
-    public String getComment(){return comment;}
+    @Override public int getId(){return this.id;}
+    @Override public double getValue(){return this.value;}
+    @Override public LocalDate getDate(){return this.date;}
+    @Override public String getSubject(){return this.subject;}
+    @Override public Teacher getTeacher(){return this.teacher;}
+    @Override public Student getStudent(){return this.student;}
+    @Override public double getWeight(){return weight;}
+    // @Override public String getComment(){return comment;}
 
 
 
-    public void setComment(String comment){this.comment = comment;}
+    // public void setComment(String comment){this.comment = comment;}
+
+    // @Override
+    // public String toString() {
+    //     // return String.format("Grade[id=%d, subject=%s, value=%.1f, weight=%.2f, student=%s, teacher=%s, type=%s, comment=%s]",
+    //     return String.format("Grade[id=%d, subject=%s, value=%.1f, weight=%.2f, student=%s, teacher=%s, type=%s]",
+    //             id, subject, value, weight, 
+    //             student.getName(), teacher.getName(), type, comment);
+    // }
 
     @Override
     public String toString() {
-        return String.format("Grade[id=%d, subject=%s, value=%.1f, weight=%.2f, student=%s, teacher=%s, type=%s, comment=%s]",
-                id, subject, value, weight, 
-                student.getName(), teacher.getName(), type, comment);
+        return String.format("""
+            ── Grade ───────────────────────────
+            - ID: %d
+            - Subject: %s
+            - Value: %.2f  (Weight: %.2f)
+            - Type: %s
+            - Student: %s
+            - Teacher: %s
+            - Date: %s
+            ────────────────────────────────────
+            """, id, subject, value, weight, type, 
+            student.getName(), teacher.getName(), date);
     }
 }

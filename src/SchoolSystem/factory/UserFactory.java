@@ -4,7 +4,7 @@ import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
 
 public class UserFactory {
-    public static IUser createUser(String role, int id, int age, String name, String extraInfo){
+    public IUser createUser(String role, int id, int age, String name, String extraInfo){
         role = role.toLowerCase().strip();
         switch(role){
 
