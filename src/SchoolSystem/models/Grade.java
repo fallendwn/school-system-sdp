@@ -35,6 +35,7 @@ public class Grade {
     public Teacher getTeacher(){return this.teacher;}
     public Student getStudent(){return this.student;}
     public double getWeight(){return weight;}
+    public String getType(){return this.type;}
     public String getComment(){return comment;}
 
 

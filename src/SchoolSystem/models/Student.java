@@ -1,9 +1,13 @@
 package src.SchoolSystem.models;
 
 import java.util.ArrayList;
-import src.SchoolSystem.factory.IUser;
+import java.util.List;
 
-public class Student implements IUser {
+import src.SchoolSystem.factory.IUser;
+import src.SchoolSystem.observer.observer.IObserver;
+import src.SchoolSystem.strategy.istrategy.IStrategy;
+
+public class Student implements IUser,IObserver {
 
 
     private final int id;
@@ -11,6 +15,7 @@ public class Student implements IUser {
     private final ArrayList<Grade> grades = new ArrayList<>();
     private int gradeLevel;
     private int age;
+    private IStrategy strategy;
 
     public Student(int gradeLevel, String name, int id, int age){
 
@@ -40,9 +45,33 @@ public class Student implements IUser {
 
     public int getGradeLevel(){return gradeLevel;}
 
-    public void addGrade(Grade grade){grades.add(grade);}
+    public void setStrategy(IStrategy strategy){this.strategy=strategy;}
 
-    public void changeGrade(Grade grade){}
+    public void returnGrade(Student student){strategy.execute(student);}
+
+    private final List<String> notifications = new ArrayList<>();
+    
+    @Override
+     public void update(Grade grade) {
+        String message = String.format(
+                "You have received a new grade: %.1f for subject %s (type: %s, weight: %.0f%%)",
+                grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
+        );
+
+        notifications.add(message);
+        // System.out.println(name + ", " + message);
+    }
+
+    public void showNotifications() {
+        if (notifications.isEmpty()) {
+            System.out.println(name + " has no new notifications.");
+            return;
+        }
+        System.out.println(" Notifications for " + name + ":");
+        for (String message : notifications) {
+            System.out.println(" - " + message);
+        }
+    }
 
 }
     
