@@ -6,14 +6,20 @@ import src.SchoolSystem.builder.GradeBuilder;
 import src.SchoolSystem.decorator.decorators.BehaviorDecorator;
 import src.SchoolSystem.decorator.decorators.CommentDecorator;
 import src.SchoolSystem.decorator.interfaces.IGrade;
+import src.SchoolSystem.factory.IUserFactory;
+import src.SchoolSystem.factory.StudentFactory;
+import src.SchoolSystem.factory.TeacherFactory;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
 
 public class Main {
     public static void main(String[] args) {
-        Student student = new Student(100, "student0", 0, 11);
-        Teacher teacher = new Teacher(1, "math", "teacher1", 31);
+        IUserFactory studentFactory = new StudentFactory();
+        Student student = (Student) studentFactory.create(0, "student0", 11);
+
+        IUserFactory mathTeacherFactory = new TeacherFactory("math");
+        Teacher teacher = (Teacher) mathTeacherFactory.create(0, "teacher0", 31);
 
         // 1. Создаём базовую оценку через билдера
         Grade grade = new GradeBuilder()
