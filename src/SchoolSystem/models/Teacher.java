@@ -7,18 +7,12 @@ import src.SchoolSystem.factory.IUser;
 import src.SchoolSystem.observer.subject.IPublisher;
 public class Teacher implements IUser, IPublisher{
     
-    private final int id;
-    private final String name;
-    private final String subject;
+    private int id;
+    private String name;
+    private String subject;
     private final ArrayList<Student> students = new ArrayList<>();
     private int age;
 
-    public Teacher(int id, String subject, String name, int age){
-        this.id = id;
-        this.name = name;
-        this.subject = subject;
-        this.age = age;
-    }
     @Override
     public int getId() { return id; }
 
@@ -38,6 +32,25 @@ public class Teacher implements IUser, IPublisher{
     public void addStudent(Student student) {
         students.add(student);
     }
+
+    public void setName(String name){
+
+        this.name = name;
+
+    }
+
+    public void setId(int id){
+
+        this.id = id;
+
+    }
+
+    public void setSubject(String subject){
+
+        this.subject = subject;
+
+    }
+
 
     public void deleteStudent(Student student){students.remove(student);}
 
