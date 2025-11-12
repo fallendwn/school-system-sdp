@@ -1,9 +1,12 @@
 package src.SchoolSystem.models;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
-import src.SchoolSystem.factory.IUser;
 
-public class Teacher implements IUser {
+import src.SchoolSystem.builder.GradeBuilder;
+import src.SchoolSystem.factory.IUser;
+import src.SchoolSystem.observer.subject.IPublisher;
+public class Teacher implements IUser, IPublisher{
     private int id;
     private String name;
     private String subject;
@@ -30,8 +33,38 @@ public class Teacher implements IUser {
     public void setAge(int newAge){ this.age = newAge; }
     public void setSubject(String subject) { this.subject = subject; }
 
-    // Student management
+     // Student management
     public ArrayList<Student> getStudents(){ return students; }
     public void addStudent(Student student) { students.add(student); }
     public void deleteStudent(Student student){ students.remove(student); }
+
+    public void giveGrade(Student student, int id,float value, int weight, String type) {
+        Grade grade = new GradeBuilder()
+                .setId(id)
+                .setValue(value)
+                .setDate(LocalDate.now()) 
+                .setSubject(this.subject)
+                .setTeacher(this)
+                .setStudent(student)
+                .setType(type)
+                .setWeight(weight)
+                .build();
+
+        student.getGrades().add(grade);
+        System.out.printf("Teacher %s gave %.1f (%s) to %s in %s%n",
+                name, value, type, student.getName(), subject);
+
+        notify(grade); 
+    }
+    
+    @Override
+    public void notify(Grade grade) {
+        for(Student student : students){
+            if (student.getId() == grade.getStudent().getId()) {
+                student.update(grade);
+            }
+        }
+    }
+   
 }
+            
