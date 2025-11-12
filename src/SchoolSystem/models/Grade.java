@@ -13,10 +13,8 @@ public class Grade implements IGrade {
     private final Student student;
     private final String type; // exam homework ? 
     private final double weight; // for weight strategy;
-    // private String comment; // for decorator initially it's empty
 
     public Grade(GradeBuilder builder){
-
         this.id =  builder.id;
         this.value = builder.value;
         this.date = builder.date;
@@ -25,7 +23,6 @@ public class Grade implements IGrade {
         this.student = builder.student;
         this.type = builder.type;
         this.weight = builder.weight;
-
     }
     
     @Override public int getId(){return this.id;}
@@ -35,19 +32,6 @@ public class Grade implements IGrade {
     @Override public Teacher getTeacher(){return this.teacher;}
     @Override public Student getStudent(){return this.student;}
     @Override public double getWeight(){return weight;}
-    // @Override public String getComment(){return comment;}
-
-
-
-    // public void setComment(String comment){this.comment = comment;}
-
-    // @Override
-    // public String toString() {
-    //     // return String.format("Grade[id=%d, subject=%s, value=%.1f, weight=%.2f, student=%s, teacher=%s, type=%s, comment=%s]",
-    //     return String.format("Grade[id=%d, subject=%s, value=%.1f, weight=%.2f, student=%s, teacher=%s, type=%s]",
-    //             id, subject, value, weight, 
-    //             student.getName(), teacher.getName(), type, comment);
-    // }
 
     @Override
     public String toString() {
