@@ -1,14 +1,19 @@
 package src.SchoolSystem.models;
 
 import java.util.ArrayList;
-import src.SchoolSystem.factory.IUser;
+import java.util.List;
 
-public class Student implements IUser {
+import src.SchoolSystem.factory.IUser;
+import src.SchoolSystem.observer.observer.IObserver;
+import src.SchoolSystem.strategy.istrategy.IStrategy;
+
+public class Student implements IUser,IObserver {
     private int id;
     private String name;
     private final ArrayList<Grade> grades = new ArrayList<>();
     private int gradeLevel;
     private int age;
+    private IStrategy strategy;
 
     public Student(int id, String name, int gradeLevel, int age) {
         this.id = id;
@@ -24,7 +29,7 @@ public class Student implements IUser {
     @Override public int getAge(){ return age; }
     public int getGradeLevel(){return gradeLevel;}
 
-    // Setters
+     // Setters
     public void setId(int id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setGradeLevel(int gradeLevel) { this.gradeLevel = gradeLevel; }
@@ -32,8 +37,35 @@ public class Student implements IUser {
 
     // Grade management
     public ArrayList<Grade> getGrades(){return grades;}
-    public void addGrade(Grade grade){grades.add(grade);}
     public void changeGrade(Grade grade){}
+
+
+    public void setStrategy(IStrategy strategy){this.strategy=strategy;}
+
+    public void returnGrade(Student student){strategy.execute(student);}
+
+    private final List<String> notifications = new ArrayList<>();
+
+    @Override
+     public void update(Grade grade) {
+        String message = String.format(
+                "You have received a new grade: %.1f for subject %s (type: %s, weight: %.0f%%)",
+                grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
+        );
+
+        notifications.add(message);
+    }
+
+    public void showNotifications() {
+        if (notifications.isEmpty()) {
+            System.out.println(name + " has no new notifications.");
+            return;
+        }
+        System.out.println(" Notifications for " + name + ":");
+        for (String message : notifications) {
+            System.out.println(" - " + message);
+        }
+    }
 
 }
     
