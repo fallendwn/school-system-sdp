@@ -5,7 +5,7 @@ import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
 
-public class calculateWeight implements IStrategy {
+public class CalculateWeight implements IStrategy {
 
     @Override
     public void execute(Student student) {
@@ -16,10 +16,10 @@ public class calculateWeight implements IStrategy {
             return;
         }
 
-        double totalWeighted = 0.0;
+        float totalWeighted = 0f;
 
         for (Grade grade : grades) {
-            double weight = grade.getWeight() / 100.0;
+            float weight = grade.getWeight() / 100f;
             totalWeighted += grade.getValue() * weight;
         }
 

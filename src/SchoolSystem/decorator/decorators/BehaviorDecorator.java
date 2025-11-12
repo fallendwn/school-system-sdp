@@ -11,6 +11,6 @@ public class BehaviorDecorator extends BaseDecorator {
     }
 
     public String toString() {
-        return grade.toString() + "- Behavior: " + behaviorRate + "/10\n";
+        return grade.toString() + " [Behavior: " + behaviorRate + "/10] ";
     }
 }

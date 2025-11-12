@@ -65,6 +65,10 @@ public class Teacher implements IUser, IPublisher{
             }
         }
     }
-   
+
+    @Override
+    public String toString() {
+        return String.format("- %s (id=%d, age=%d, subject=%d)", name, id, age, subject);
+    }
 }
             

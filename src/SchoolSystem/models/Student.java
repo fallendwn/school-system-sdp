@@ -35,14 +35,28 @@ public class Student implements IUser,IObserver {
     public void setGradeLevel(int gradeLevel) { this.gradeLevel = gradeLevel; }
     public void setAge(int newAge) { this.age = newAge; }
 
-    // Grade management
+    // Grades
     public ArrayList<Grade> getGrades(){return grades;}
-    public void changeGrade(Grade grade){}
+
+    public void changeGrade(Grade grade){
+        if (grade == null) return;
+        for (int i = 0; i < grades.size(); i++){
+            if (grades.get(i).getId() == grade.getId()){
+                grades.set(i, grade);
+                return;
+            }
+        }
+        grades.add(grade);
+    }
 
 
     public void setStrategy(IStrategy strategy){this.strategy=strategy;}
 
     public void returnGrade(Student student){strategy.execute(student);}
+
+    public List<Grade> viewAllGrades(){
+        return List.copyOf(grades);
+    }
 
     private final List<String> notifications = new ArrayList<>();
 
@@ -56,7 +70,7 @@ public class Student implements IUser,IObserver {
         notifications.add(message);
     }
 
-    public void showNotifications() {
+    public void showNotifications() { 
         if (notifications.isEmpty()) {
             System.out.println(name + " has no new notifications.");
             return;
@@ -65,7 +79,12 @@ public class Student implements IUser,IObserver {
         for (String message : notifications) {
             System.out.println(" - " + message);
         }
+        notifications.clear();
     }
 
+    @Override
+    public String toString() {
+        return String.format("- %s (id=%d, age=%d, gradeLevel=%d)", name, id, age, gradeLevel);
+    }
 }
     
