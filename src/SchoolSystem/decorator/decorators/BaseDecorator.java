@@ -18,6 +18,7 @@ public class BaseDecorator implements IGrade {
     @Override public LocalDate getDate() { return grade.getDate(); }
     @Override public String getSubject() { return grade.getSubject(); }
     @Override public double getWeight() { return grade.getWeight(); }
+    @Override public String getType(){return grade.getType();}
     @Override public Teacher getTeacher() { return grade.getTeacher(); }
     @Override public Student getStudent() { return grade.getStudent(); }
 
