@@ -7,6 +7,6 @@ public class StudentFactory implements IUserFactory {
     @Override
     public Student create(int id, String name, int age, Object... extraInformation){
         int gradeLevel = (int) extraInformation[0];
-        return new Student(id, name, age, gradeLevel);
+        return new Student(id, name, gradeLevel, age);
     }
 }

@@ -7,12 +7,12 @@ import src.SchoolSystem.models.Teacher;
 
 public interface IGrade {
     int getId();
-    double getValue();
+    float getValue();
     LocalDate getDate();
     String getSubject();
     Teacher getTeacher();
     Student getStudent();
-    double getWeight();
+    float getWeight();
     String getType();
     String toString();
 }

@@ -12,6 +12,6 @@ public class CommentDecorator extends BaseDecorator {
 
     @Override
     public String toString() {
-        return grade.toString() + "- Comment: " + comment + "\n";
+        return grade.toString() + " [Comment: " + comment + "] ";
     }
 }

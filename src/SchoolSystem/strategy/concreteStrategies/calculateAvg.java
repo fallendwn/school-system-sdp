@@ -6,7 +6,7 @@ import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
 
-public class calculateAvg implements IStrategy {
+public class CalculateAvg implements IStrategy {
 
     @Override
     public void execute(Student student) {

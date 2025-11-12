@@ -14,10 +14,10 @@ public class BaseDecorator implements IGrade {
     }
 
     @Override public int getId() { return grade.getId(); }
-    @Override public double getValue() { return grade.getValue(); }
+    @Override public float getValue() { return grade.getValue(); }
     @Override public LocalDate getDate() { return grade.getDate(); }
     @Override public String getSubject() { return grade.getSubject(); }
-    @Override public double getWeight() { return grade.getWeight(); }
+    @Override public float getWeight() { return grade.getWeight(); }
     @Override public String getType(){return grade.getType();}
     @Override public Teacher getTeacher() { return grade.getTeacher(); }
     @Override public Student getStudent() { return grade.getStudent(); }

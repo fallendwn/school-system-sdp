@@ -12,7 +12,7 @@ public class Grade implements IGrade {
     private final Teacher teacher;
     private final Student student;
     private final String type; // exam homework ? 
-    private final double weight; // for weight strategy;
+    private final float weight; // for weight strategy;
 
     public Grade(GradeBuilder builder){
         this.id =  builder.id;
@@ -26,16 +26,15 @@ public class Grade implements IGrade {
     }
     
     @Override public int getId(){return this.id;}
-    @Override public double getValue(){return this.value;}
+    @Override public float getValue(){return this.value;}
     @Override public LocalDate getDate(){return this.date;}
     @Override public String getSubject(){return this.subject;}
     @Override public Teacher getTeacher(){return this.teacher;}
     @Override public Student getStudent(){return this.student;}
     @Override public String getType(){return this.type;}
-    @Override public double getWeight(){return weight;}
+    @Override public float getWeight(){return weight;}
 
-    @Override
-    public String toString() {
+    public String getDeatails() { // удалить
         return String.format("""
             ── Grade ───────────────────────────
             - ID: %d
@@ -48,5 +47,9 @@ public class Grade implements IGrade {
             ────────────────────────────────────
             """, id, subject, value, weight, type, 
             student.getName(), teacher.getName(), date);
+    }
+
+    public String toString() {
+        return String.format("%.2f (%.2f)", value, weight);
     }
 }
