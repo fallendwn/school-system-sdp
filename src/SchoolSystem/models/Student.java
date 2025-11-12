@@ -8,8 +8,6 @@ import src.SchoolSystem.observer.observer.IObserver;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
 
 public class Student implements IUser,IObserver {
-
-
     private int id;
     private String name;
     private final ArrayList<Grade> grades = new ArrayList<>();
@@ -17,39 +15,30 @@ public class Student implements IUser,IObserver {
     private int age;
     private IStrategy strategy;
 
-
-
-    public void setName(String name){
-
-        this.name = name;
-
-    }
-
-    public void setId(int id){
-
+    public Student(int id, String name, int gradeLevel, int age) {
         this.id = id;
-
+        this.name = name;
+        this.gradeLevel = gradeLevel;
+        this.age = age;
     }
 
-    @Override
-    public int getId() { return id; }
-
-    @Override
-    public String getName() { return name; }
-
-    @Override
-    public String getRole() { return "Student"; }
-
-    @Override
-    public int getAge(){ return age; }
-
-    public ArrayList<Grade> getGrades(){return grades;}
-
-    public void setAge(int newAge){ this.age = newAge;}
-
-    public void setGradeLevel(int gradeLevel){this.gradeLevel = gradeLevel;}
-
+    // Getters
+    @Override public int getId() { return id; }
+    @Override public String getName() { return name; }
+    @Override public String getRole() { return "Student"; }
+    @Override public int getAge(){ return age; }
     public int getGradeLevel(){return gradeLevel;}
+
+     // Setters
+    public void setId(int id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setGradeLevel(int gradeLevel) { this.gradeLevel = gradeLevel; }
+    public void setAge(int newAge) { this.age = newAge; }
+
+    // Grade management
+    public ArrayList<Grade> getGrades(){return grades;}
+    public void changeGrade(Grade grade){}
+
 
     public void setStrategy(IStrategy strategy){this.strategy=strategy;}
 
@@ -65,7 +54,6 @@ public class Student implements IUser,IObserver {
         );
 
         notifications.add(message);
-        // System.out.println(name + ", " + message);
     }
 
     public void showNotifications() {
