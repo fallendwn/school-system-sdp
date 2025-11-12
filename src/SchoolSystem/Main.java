@@ -16,12 +16,11 @@ import src.SchoolSystem.models.Teacher;
 public class Main {
     public static void main(String[] args) {
         IUserFactory studentFactory = new StudentFactory();
-        Student student = (Student) studentFactory.create(0, "student0", 11);
+        Student student = (Student) studentFactory.create(0, "student0", 11, 1);
 
-        IUserFactory mathTeacherFactory = new TeacherFactory("math");
-        Teacher teacher = (Teacher) mathTeacherFactory.create(0, "teacher0", 31);
+        IUserFactory mathTeacherFactory = new TeacherFactory();
+        Teacher teacher = (Teacher) mathTeacherFactory.create(0, "teacher0", 31, "orys tili");
 
-        // 1. Создаём базовую оценку через билдера
         Grade grade = new GradeBuilder()
                 .setId(0)
                 .setValue(95f)
