@@ -13,5 +13,6 @@ public interface IGrade {
     Teacher getTeacher();
     Student getStudent();
     double getWeight();
+    String getType();
     String toString();
 }

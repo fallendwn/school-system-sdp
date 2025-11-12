@@ -31,6 +31,7 @@ public class Grade implements IGrade {
     @Override public String getSubject(){return this.subject;}
     @Override public Teacher getTeacher(){return this.teacher;}
     @Override public Student getStudent(){return this.student;}
+    @Override public String getType(){return this.type;}
     @Override public double getWeight(){return weight;}
 
     @Override
