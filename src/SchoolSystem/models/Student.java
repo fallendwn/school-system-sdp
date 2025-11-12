@@ -45,7 +45,7 @@ public class Student implements IUser,IObserver {
     public void returnGrade(Student student){strategy.execute(student);}
 
     private final List<String> notifications = new ArrayList<>();
-    
+
     @Override
      public void update(Grade grade) {
         String message = String.format(

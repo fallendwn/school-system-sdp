@@ -40,9 +40,9 @@ public class Teacher implements IUser, IPublisher{
 
     public void giveGrade(Student student, int id,float value, int weight, String type) {
         Grade grade = new GradeBuilder()
-                .setId(id) 
+                .setId(id)
                 .setValue(value)
-                .setDate(LocalDate.now())
+                .setDate(LocalDate.now()) 
                 .setSubject(this.subject)
                 .setTeacher(this)
                 .setStudent(student)
