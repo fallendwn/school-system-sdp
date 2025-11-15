@@ -3,8 +3,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import src.SchoolSystem.builder.ConcreteBuilder.GradeBuilder;
 import src.SchoolSystem.factory.factory.IUser;
-
 import src.SchoolSystem.observer.subject.IPublisher;
+import src.SchoolSystem.utils.Messages.TeacherMessages;
 public class Teacher implements IUser, IPublisher{
     private int id;
     private String name;
@@ -50,9 +50,8 @@ public class Teacher implements IUser, IPublisher{
                 .build();
 
         student.getGrades().add(grade);
-        System.out.printf("Teacher %s gave %.1f (%s) to %s in %s%n",
+        System.out.printf(TeacherMessages.GIVE_GRADE,
                 name, value, type, student.getName(), subject);
-
         notify(grade); 
     }
     
@@ -67,7 +66,7 @@ public class Teacher implements IUser, IPublisher{
 
     @Override
     public String toString() {
-        return String.format("- %s (id=%d, age=%d, subject=%d)", name, id, age, subject);
+        return String.format("- %s (id=%d, age=%d, subject=%s)", name, id, age, subject);
     }
 }
             

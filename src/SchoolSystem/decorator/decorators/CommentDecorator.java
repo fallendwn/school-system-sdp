@@ -3,7 +3,7 @@ package src.SchoolSystem.decorator.decorators;
 import src.SchoolSystem.decorator.interfaces.IGrade;
 
 public class CommentDecorator extends BaseDecorator {
-    private String comment;
+    private final String comment;
 
     public CommentDecorator(IGrade grade, String comment) {
         super(grade);
