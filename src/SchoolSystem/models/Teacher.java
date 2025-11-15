@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import src.SchoolSystem.builder.ConcreteBuilder.GradeBuilder;
 import src.SchoolSystem.factory.factory.IUser;
 import src.SchoolSystem.observer.subject.IPublisher;
+import src.SchoolSystem.utils.GradeEventType;
 import src.SchoolSystem.utils.Messages.TeacherMessages;
 public class Teacher implements IUser, IPublisher{
     private int id;
@@ -52,14 +53,14 @@ public class Teacher implements IUser, IPublisher{
         student.getGrades().add(grade);
         System.out.printf(TeacherMessages.GIVE_GRADE,
                 name, value, type, student.getName(), subject);
-        notify(grade); 
+        notify(grade,GradeEventType.NEW); 
     }
     
     @Override
-    public void notify(Grade grade) {
+    public void notify(Grade grade, GradeEventType type) {
         for(Student student : students){
             if (student.getId() == grade.getStudent().getId()) {
-                student.update(grade);
+                student.update(grade,type);
             }
         }
     }

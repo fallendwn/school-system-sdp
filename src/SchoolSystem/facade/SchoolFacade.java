@@ -11,6 +11,7 @@ import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateAvg;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateWeight;
+import src.SchoolSystem.utils.GradeEventType;
 import src.SchoolSystem.utils.Messages.FacadeMessages;
 
 public class SchoolFacade {
@@ -83,8 +84,7 @@ public class SchoolFacade {
 
         student.getGrades().add(grade);
 
-        student.update(grade);
-        teacher.notify(grade);
+        teacher.notify(grade, GradeEventType.NEW);
 
         return grade;
     }
@@ -107,7 +107,7 @@ public class SchoolFacade {
 
         student.changeGrade(newGrade);
 
-        student.update(newGrade);
+        teacher.notify(newGrade, GradeEventType.UPDATED);
         return true;
     }
 

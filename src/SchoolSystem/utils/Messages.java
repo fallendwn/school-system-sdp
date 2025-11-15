@@ -14,6 +14,7 @@ public class Messages {
         public static final String UPDATE_MESSAGE = "You have received a new grade: %.1f for subject %s (type: %s, weight: %.0f%%)";
         public static final String NO_NEW_NOTIFICATIONS = " has no new notifications.";
         public static final String NOTIFICATIONS_FOR = " Notifications for ";
+        public static final String CHANGED_GRADE = "You have changed a grade: %.1f for subject %s (type: %s, weight: %.0f%%)";
     }
 
     public static class TeacherMessages{
@@ -26,7 +27,7 @@ public class Messages {
 
         public static final String NO_GRADES = "No grades for student: ";
         public static final String AVERAGE_GRADE = "Average grade for ";
-        public static final String GRADE_WEIGHT = "Grade taking into accoint weight: ";
+        public static final String GRADE_WEIGHT = "Grade taking into account weight: ";
 
     }
 

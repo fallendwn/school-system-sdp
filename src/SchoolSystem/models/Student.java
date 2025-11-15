@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import src.SchoolSystem.factory.factory.IUser;
 import src.SchoolSystem.observer.observer.IObserver;
+import src.SchoolSystem.utils.GradeEventType;
 import src.SchoolSystem.strategy.strategy.IStrategy;
 import src.SchoolSystem.utils.Messages.StudentMessages;
 
@@ -61,11 +62,19 @@ public class Student implements IUser,IObserver {
     private final List<String> notifications = new ArrayList<>();
 
     @Override
-     public void update(Grade grade) {
-        String message = String.format(
-                StudentMessages.UPDATE_MESSAGE,
-                grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
-        );
+     public void update(Grade grade, GradeEventType type) {
+        String message;
+        if(type == GradeEventType.NEW){
+            message = String.format(
+                    StudentMessages.UPDATE_MESSAGE,
+                    grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
+            );
+        }else{
+            message = String.format(
+                    StudentMessages.CHANGED_GRADE,
+                    grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
+            );
+        }
 
         notifications.add(message);
     }
