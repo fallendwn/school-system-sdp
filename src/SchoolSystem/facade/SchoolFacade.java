@@ -12,8 +12,10 @@ import src.SchoolSystem.models.Teacher;
 import src.SchoolSystem.strategy.IStrategy.IStrategy;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateAvg;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateWeight;
+import src.SchoolSystem.utils.Messages.FacadeMessages;
 
 public class SchoolFacade {
+
     private final List<Student> students = new ArrayList<>();
     private final List<Teacher> teachers = new ArrayList<>();
     private int nextUserId = 1;
@@ -122,16 +124,25 @@ public class SchoolFacade {
         return List.copyOf(student.getGrades());
     }
 
+    public void setStudentStrategy(int studentId, IStrategy strategy){
+        Student student = findStudentById(studentId);
+        if (student == null) {
+            System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
+            return;
+        }
+        student.setStrategy(strategy);
+    }
+
     public void setStudentStrategyByName(int studentId, String name){
         Student student = findStudentById(studentId);
         if (student == null) {
-            System.out.println("Student not found: " + studentId);
+            System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
             return;
         }
         switch(name.toLowerCase().strip()){
             case "avg", "average" -> student.setStrategy(new CalculateAvg());
             case "weighted", "weight" -> student.setStrategy(new CalculateWeight());
-            default -> System.out.println("Unknown strategy: " + name);
+            default -> System.out.println(FacadeMessages.UNKNOWN_STRATEGY + name);
         }
     }
 
@@ -139,7 +150,7 @@ public class SchoolFacade {
     public void calculateGradeStrategy(int studentId) {
         Student student = findStudentById(studentId);
         if (student == null) {
-            System.out.println("Student not found: " + studentId);
+            System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
             return;
         }
         student.executeStrategy(student);

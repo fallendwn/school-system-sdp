@@ -1,7 +1,6 @@
 package src.SchoolSystem.decorator.interfaces;
 
 import java.time.LocalDate;
-
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
 
@@ -14,5 +13,4 @@ public interface IGrade {
     Student getStudent();
     float getWeight();
     String getType();
-    String toString();
 }
