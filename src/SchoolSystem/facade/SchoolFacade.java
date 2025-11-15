@@ -9,9 +9,9 @@ import src.SchoolSystem.factory.ConcreteFactory.TeacherFactory;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
+import src.SchoolSystem.strategy.IStrategy.IStrategy;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateAvg;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateWeight;
-import src.SchoolSystem.strategy.istrategy.IStrategy;
 
 public class SchoolFacade {
     private final List<Student> students = new ArrayList<>();
@@ -122,22 +122,13 @@ public class SchoolFacade {
         return List.copyOf(student.getGrades());
     }
 
-    public void setStudentStrategy(int studentId, IStrategy strategy){
-        Student student = findStudentById(studentId);
-        if (student == null) {
-            System.out.println("Student not found: " + studentId);
-            return;
-        }
-        student.setStrategy(strategy);
-    }
-
     public void setStudentStrategyByName(int studentId, String name){
         Student student = findStudentById(studentId);
         if (student == null) {
             System.out.println("Student not found: " + studentId);
             return;
         }
-        switch(name.toLowerCase()){
+        switch(name.toLowerCase().strip()){
             case "avg", "average" -> student.setStrategy(new CalculateAvg());
             case "weighted", "weight" -> student.setStrategy(new CalculateWeight());
             default -> System.out.println("Unknown strategy: " + name);
@@ -151,27 +142,8 @@ public class SchoolFacade {
             System.out.println("Student not found: " + studentId);
             return;
         }
-        student.returnGrade(student);
+        student.executeStrategy(student);
     }
-    // public void calculateAverage(int studentId){
-    //     Student student = findStudentById(studentId);
-    //     if (student == null) {
-    //         System.out.println("Student not found: " + studentId);
-    //         return;
-    //     }
-    //     student.setStrategy(new CalculateAvg());
-    //     student.returnGrade(student);
-    // }
-
-    // public void calculateWeighted(int studentId){
-    //     Student student = findStudentById(studentId);
-    //     if (student == null) {
-    //         System.out.println("Student not found: " + studentId);
-    //         return;
-    //     }
-    //     student.setStrategy(new CalculateWeight());
-    //     student.returnGrade(student);
-    // }
 
     // helpers
     private Student findStudentById(int id) {
