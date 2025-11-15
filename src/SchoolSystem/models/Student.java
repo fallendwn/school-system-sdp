@@ -3,9 +3,9 @@ package src.SchoolSystem.models;
 import java.util.ArrayList;
 import java.util.List;
 import src.SchoolSystem.factory.factory.IUser;
-
 import src.SchoolSystem.observer.observer.IObserver;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
+import src.SchoolSystem.utils.Messages.StudentMessages;
 
 public class Student implements IUser,IObserver {
     private int id;
@@ -63,7 +63,7 @@ public class Student implements IUser,IObserver {
     @Override
      public void update(Grade grade) {
         String message = String.format(
-                "You have received a new grade: %.1f for subject %s (type: %s, weight: %.0f%%)",
+                StudentMessages.UPDATE_MESSAGE,
                 grade.getValue(), grade.getSubject(), grade.getType(), grade.getWeight()
         );
 
@@ -72,10 +72,10 @@ public class Student implements IUser,IObserver {
 
     public void showNotifications() { 
         if (notifications.isEmpty()) {
-            System.out.println(name + " has no new notifications.");
+            System.out.println(name + StudentMessages.NO_NEW_NOTIFICATIONS);
             return;
         }
-        System.out.println(" Notifications for " + name + ":");
+        System.out.println(StudentMessages.NOTIFICATIONS_FOR + name + ":");
         for (String message : notifications) {
             System.out.println(" - " + message);
         }

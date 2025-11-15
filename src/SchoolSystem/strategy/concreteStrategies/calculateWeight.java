@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
+import src.SchoolSystem.utils.Messages.StrategyMessages;
 
 public class CalculateWeight implements IStrategy {
 
@@ -12,7 +13,7 @@ public class CalculateWeight implements IStrategy {
         ArrayList<Grade> grades = student.getGrades();
 
         if (grades == null || grades.isEmpty()) {
-            System.out.println("No grades for student: " + student.getName());
+            System.out.println(StrategyMessages.NO_GRADES + student.getName());
             return;
         }
 
@@ -23,7 +24,7 @@ public class CalculateWeight implements IStrategy {
             totalWeighted += grade.getValue() * weight;
         }
 
-        System.out.println("Grade taking into accoint weight: " + totalWeighted);
+        System.out.println(StrategyMessages.GRADE_WEIGHT + totalWeighted);
 
     }
 }
