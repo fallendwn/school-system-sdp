@@ -1,4 +1,4 @@
-package src.SchoolSystem.factory;
+package src.SchoolSystem.factory.factory;
 
 public interface IUser {
     int getId();

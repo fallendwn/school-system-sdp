@@ -3,13 +3,12 @@ package src.SchoolSystem.facade;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import src.SchoolSystem.builder.GradeBuilder;
+import src.SchoolSystem.builder.ConcreteBuilder.GradeBuilder;
+import src.SchoolSystem.factory.ConcreteFactory.StudentFactory;
+import src.SchoolSystem.factory.ConcreteFactory.TeacherFactory;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
-import src.SchoolSystem.factory.StudentFactory;
-import src.SchoolSystem.factory.TeacherFactory;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateAvg;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateWeight;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
@@ -139,16 +138,9 @@ public class SchoolFacade {
             return;
         }
         switch(name.toLowerCase()){
-            case "avg":
-            case "average":
-                student.setStrategy(new CalculateAvg());
-                break;
-            case "weighted":
-            case "weight":
-                student.setStrategy(new CalculateWeight());
-                break;
-            default:
-                System.out.println("Unknown strategy: " + name);
+            case "avg", "average" -> student.setStrategy(new CalculateAvg());
+            case "weighted", "weight" -> student.setStrategy(new CalculateWeight());
+            default -> System.out.println("Unknown strategy: " + name);
         }
     }
 

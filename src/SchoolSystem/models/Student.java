@@ -2,8 +2,8 @@ package src.SchoolSystem.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import src.SchoolSystem.factory.factory.IUser;
 
-import src.SchoolSystem.factory.IUser;
 import src.SchoolSystem.observer.observer.IObserver;
 import src.SchoolSystem.strategy.istrategy.IStrategy;
 

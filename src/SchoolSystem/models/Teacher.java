@@ -1,10 +1,9 @@
 package src.SchoolSystem.models;
 import java.time.LocalDate;
-
 import java.util.ArrayList;
+import src.SchoolSystem.builder.ConcreteBuilder.GradeBuilder;
+import src.SchoolSystem.factory.factory.IUser;
 
-import src.SchoolSystem.builder.GradeBuilder;
-import src.SchoolSystem.factory.IUser;
 import src.SchoolSystem.observer.subject.IPublisher;
 public class Teacher implements IUser, IPublisher{
     private int id;
