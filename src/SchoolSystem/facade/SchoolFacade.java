@@ -124,15 +124,6 @@ public class SchoolFacade {
         return List.copyOf(student.getGrades());
     }
 
-    public void setStudentStrategy(int studentId, IStrategy strategy){
-        Student student = findStudentById(studentId);
-        if (student == null) {
-            System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
-            return;
-        }
-        student.setStrategy(strategy);
-    }
-
     public void setStudentStrategyByName(int studentId, String name){
         Student student = findStudentById(studentId);
         if (student == null) {
