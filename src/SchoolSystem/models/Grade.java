@@ -1,7 +1,7 @@
 package src.SchoolSystem.models;
 
 import java.time.LocalDate;
-import src.SchoolSystem.builder.GradeBuilder;
+import src.SchoolSystem.builder.ConcreteBuilder.GradeBuilder;
 import src.SchoolSystem.decorator.interfaces.IGrade;
 
 public class Grade implements IGrade {
@@ -48,7 +48,7 @@ public class Grade implements IGrade {
             """, id, subject, value, weight, type, 
             student.getName(), teacher.getName(), date);
     }
-
+    @Override
     public String toString() {
         return String.format("%.2f (%.2f)", value, weight);
     }
