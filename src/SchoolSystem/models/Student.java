@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import src.SchoolSystem.factory.factory.IUser;
 import src.SchoolSystem.observer.observer.IObserver;
-import src.SchoolSystem.strategy.istrategy.IStrategy;
+import src.SchoolSystem.strategy.IStrategy.IStrategy;
 import src.SchoolSystem.utils.Messages.StudentMessages;
 
 public class Student implements IUser,IObserver {
@@ -52,7 +52,7 @@ public class Student implements IUser,IObserver {
 
     public void setStrategy(IStrategy strategy){this.strategy=strategy;}
 
-    public void returnGrade(Student student){strategy.execute(student);}
+    public void executeStrategy(Student student){strategy.execute(student);}
 
     public List<Grade> viewAllGrades(){
         return List.copyOf(grades);

@@ -9,11 +9,10 @@ import src.SchoolSystem.factory.ConcreteFactory.TeacherFactory;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
+import src.SchoolSystem.strategy.IStrategy.IStrategy;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateAvg;
 import src.SchoolSystem.strategy.concreteStrategies.CalculateWeight;
-import src.SchoolSystem.strategy.istrategy.IStrategy;
 import src.SchoolSystem.utils.Messages.FacadeMessages;
-
 
 public class SchoolFacade {
 
@@ -125,22 +124,13 @@ public class SchoolFacade {
         return List.copyOf(student.getGrades());
     }
 
-    public void setStudentStrategy(int studentId, IStrategy strategy){
-        Student student = findStudentById(studentId);
-        if (student == null) {
-            System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
-            return;
-        }
-        student.setStrategy(strategy);
-    }
-
     public void setStudentStrategyByName(int studentId, String name){
         Student student = findStudentById(studentId);
         if (student == null) {
             System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
             return;
         }
-        switch(name.toLowerCase()){
+        switch(name.toLowerCase().strip()){
             case "avg", "average" -> student.setStrategy(new CalculateAvg());
             case "weighted", "weight" -> student.setStrategy(new CalculateWeight());
             default -> System.out.println(FacadeMessages.UNKNOWN_STRATEGY + name);
@@ -154,7 +144,7 @@ public class SchoolFacade {
             System.out.println(FacadeMessages.STUDENT_NOT_FOUND + studentId);
             return;
         }
-        student.returnGrade(student);
+        student.executeStrategy(student);
     }
 
     // helpers

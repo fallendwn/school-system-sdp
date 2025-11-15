@@ -31,7 +31,7 @@ public class Main {
 
         // change student strategy by name and execute
         facade.setStudentStrategyByName(s1.getId(), "avg");
-        s1.returnGrade(s1);
+        s1.executeStrategy(s1);
 
         // decorator
         IGrade behaviorGrade = new BehaviorDecorator(
