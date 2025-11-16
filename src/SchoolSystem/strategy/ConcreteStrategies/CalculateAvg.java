@@ -1,4 +1,4 @@
-package src.SchoolSystem.strategy.concreteStrategies;
+package src.SchoolSystem.strategy.ConcreteStrategies;
 
 import java.util.ArrayList;
 import src.SchoolSystem.models.Grade;
@@ -6,7 +6,7 @@ import src.SchoolSystem.models.Student;
 import src.SchoolSystem.strategy.strategy.IStrategy;
 import src.SchoolSystem.utils.Messages.StrategyMessages;
 
-public class CalculateWeight implements IStrategy {
+public class CalculateAvg implements IStrategy {
 
     @Override
     public void execute(Student student) {
@@ -17,14 +17,14 @@ public class CalculateWeight implements IStrategy {
             return;
         }
 
-        float totalWeighted = 0f;
-
-        for (Grade grade : grades) {
-            float weight = grade.getWeight() / 100f;
-            totalWeighted += grade.getValue() * weight;
+        int totalGrade = 0;
+        for(Grade grade : grades){
+            totalGrade+=grade.getValue();
         }
 
-        System.out.println(StrategyMessages.GRADE_WEIGHT + totalWeighted);
+        float average = totalGrade / grades.size();
+
+        System.out.println(StrategyMessages.AVERAGE_GRADE + student.getName() + ": " + average);
 
     }
 }
