@@ -9,8 +9,8 @@ import src.SchoolSystem.factory.ConcreteFactory.TeacherFactory;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
 import src.SchoolSystem.models.Teacher;
-import src.SchoolSystem.strategy.СoncreteStrategies.CalculateAvg;
-import src.SchoolSystem.strategy.СoncreteStrategies.CalculateWeight;
+import src.SchoolSystem.strategy.ConcreteStrategies.CalculateAvg;
+import src.SchoolSystem.strategy.ConcreteStrategies.CalculateWeight;
 import src.SchoolSystem.utils.GradeEventType;
 import src.SchoolSystem.utils.Messages.FacadeMessages;
 
