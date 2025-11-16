@@ -34,20 +34,7 @@ public class Grade implements IGrade {
     @Override public String getType(){return this.type;}
     @Override public float getWeight(){return weight;}
 
-    public String getDeatails() { // удалить
-        return String.format("""
-            ── Grade ───────────────────────────
-            - ID: %d
-            - Subject: %s
-            - Value: %.2f  (Weight: %.2f)
-            - Type: %s
-            - Student: %s
-            - Teacher: %s
-            - Date: %s
-            ────────────────────────────────────
-            """, id, subject, value, weight, type, 
-            student.getName(), teacher.getName(), date);
-    }
+    
     @Override
     public String toString() {
         return String.format("%.2f (%.2f)", value, weight);

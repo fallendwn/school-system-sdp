@@ -27,7 +27,7 @@ public class Messages {
 
         public static final String NO_GRADES = "No grades for student: ";
         public static final String AVERAGE_GRADE = "Average grade for ";
-        public static final String GRADE_WEIGHT = "Grade taking into account weight: ";
+        public static final String GRADE_WEIGHT = "Grade taking into account weight for ";
 
     }
 
