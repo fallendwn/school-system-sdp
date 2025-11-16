@@ -23,8 +23,8 @@ public class Main {
         Grade grade1 = facade.addGrade(teacherYevgeniy.getId(), studentArlan.getId(), 95f, 40, "Exam", teacherYevgeniy.getSubject(), LocalDate.now());
         Grade grade2 = facade.addGrade(teacherYevgeniy.getId(), studentArlan.getId(), 80f, 60, "Homework", teacherYevgeniy.getSubject(), LocalDate.now());
 
-         Grade grade3 = facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 90f, 40, "Exam", teacherYevgeniy.getSubject(), LocalDate.now());
-        Grade grade4 = facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 80f, 60, "Homework", teacherYevgeniy.getSubject(), LocalDate.now());
+        facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 90f, 40, "Exam", teacherYevgeniy.getSubject(), LocalDate.now());
+        facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 80f, 60, "Homework", teacherYevgeniy.getSubject(), LocalDate.now());
 
         // show all students
         System.out.println("Students for teacher " + teacherYevgeniy.getName() + ":");
