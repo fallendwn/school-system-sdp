@@ -3,10 +3,10 @@ package src.SchoolSystem.strategy.concreteStrategies;
 import java.util.ArrayList;
 import src.SchoolSystem.models.Grade;
 import src.SchoolSystem.models.Student;
-import src.SchoolSystem.strategy.istrategy.IStrategy;
+import src.SchoolSystem.strategy.strategy.IStrategy;
 import src.SchoolSystem.utils.Messages.StrategyMessages;
 
-public class CalculateAvg implements IStrategy {
+public class CalculateWeight implements IStrategy {
 
     @Override
     public void execute(Student student) {
@@ -17,14 +17,14 @@ public class CalculateAvg implements IStrategy {
             return;
         }
 
-        int totalGrade = 0;
-        for(Grade grade : grades){
-            totalGrade+=grade.getValue();
+        float totalWeighted = 0f;
+
+        for (Grade grade : grades) {
+            float weight = grade.getWeight() / 100f;
+            totalWeighted += grade.getValue() * weight;
         }
 
-        float average = totalGrade / grades.size();
-
-        System.out.println(StrategyMessages.AVERAGE_GRADE + student.getName() + ": " + average);
+        System.out.println(StrategyMessages.GRADE_WEIGHT + totalWeighted);
 
     }
 }

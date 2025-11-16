@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import src.SchoolSystem.factory.factory.IUser;
 import src.SchoolSystem.observer.observer.IObserver;
-import src.SchoolSystem.strategy.istrategy.IStrategy;
+import src.SchoolSystem.strategy.strategy.IStrategy;
 import src.SchoolSystem.utils.GradeEventType;
 import src.SchoolSystem.utils.Messages.StudentMessages;
 

@@ -1,4 +1,4 @@
-package src.SchoolSystem.strategy.istrategy;
+package src.SchoolSystem.strategy.strategy;
 
 import src.SchoolSystem.models.Student;
 
