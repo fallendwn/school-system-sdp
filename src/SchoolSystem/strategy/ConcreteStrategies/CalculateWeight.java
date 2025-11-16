@@ -24,7 +24,7 @@ public class CalculateWeight implements IStrategy {
             totalWeighted += grade.getValue() * weight;
         }
 
-        System.out.println(StrategyMessages.GRADE_WEIGHT + totalWeighted);
+        System.out.println(StrategyMessages.GRADE_WEIGHT + student.getName() + ": " + totalWeighted);
 
     }
 }

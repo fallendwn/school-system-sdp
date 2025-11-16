@@ -23,6 +23,9 @@ public class Main {
         Grade grade1 = facade.addGrade(teacherYevgeniy.getId(), studentArlan.getId(), 95f, 40, "Exam", teacherYevgeniy.getSubject(), LocalDate.now());
         Grade grade2 = facade.addGrade(teacherYevgeniy.getId(), studentArlan.getId(), 80f, 60, "Homework", teacherYevgeniy.getSubject(), LocalDate.now());
 
+         Grade grade3 = facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 90f, 40, "Exam", teacherYevgeniy.getSubject(), LocalDate.now());
+        Grade grade4 = facade.addGrade(teacherYevgeniy.getId(), studentDenis.getId(), 80f, 60, "Homework", teacherYevgeniy.getSubject(), LocalDate.now());
+
         // show all students
         System.out.println("Students for teacher " + teacherYevgeniy.getName() + ":");
         for (Student s : facade.getStudents(teacherYevgeniy.getId())) {
@@ -32,6 +35,10 @@ public class Main {
         // change student strategy by name and execute
         facade.setStudentStrategyByName(studentArlan.getId(), "weight");
         studentArlan.executeStrategy(studentArlan);
+
+
+        facade.setStudentStrategyByName(studentDenis.getId(), "avg");
+        studentDenis.executeStrategy(studentDenis);
 
         // decorator
         IGrade behaviorGrade = new BehaviorDecorator(
@@ -52,6 +59,8 @@ public class Main {
         // show notifications now
         studentArlan.showNotifications();
 
+        studentDenis.showNotifications();
+        
         // delete student
         boolean sRemoved = facade.removeStudent(teacherYevgeniy.getId(), studentDenis.getId());
         System.out.println("Student " + studentDenis.getName() +  " deleted: " + sRemoved);
